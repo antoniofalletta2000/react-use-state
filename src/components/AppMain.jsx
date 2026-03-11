@@ -3,8 +3,6 @@ import { useState } from 'react'
 export default function AppMain() {
     const [isActive, setIsActive] = useState(null)
 
-
-
     const languages = [
         {
             id: 1,
@@ -38,31 +36,37 @@ export default function AppMain() {
         }
     ];
 
-    
-
     return (
         <div className="container pt-5">
-            <div className="d-flex  gap-3">
+            <div className="d-flex gap-3">
+
                 {languages.map(item => (
                     <>
+                        <div>
+                            <button key={item.id} className={` border rounded ${isActive === item.id ? 'bg-warning' : 'bg-primary'}`} onClick={() => setIsActive(isActive === item.id ? null : item.id)}>
+                                {item.title}
+                            </button>
+                            {
+                                isActive === item.id &&
+                                
+                                    <div className="card mt-5">
+                                        <h5>{item.title}</h5>
+                                        <p className='pt.5'>{item.description}</p>
+                                    </div>
+                                
 
-                        <button key={item.id} className={` border rounded ${isActive===item.id ? 'bg-warning' : 'bg-primary'}`} onClick={() => setIsActive(isActive===item.id? null:item.id)}>
-                            {item.title}
-                        </button>
-                        {
-                            isActive === item.id &&
-                            <div>
-                                {item.description}
-                            </div>
-                        }
+                            }
 
-                        
+                        </div>
                     </>
-
                 ))}
-
-                
             </div>
+
+            {/* {languages.filter(item=>(
+                <>
+                    <div key={item.id}>{isActive===item.id? item.description:null}</div>
+                </>
+            ))} */}
         </div>
 
     )
