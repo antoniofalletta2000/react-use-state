@@ -43,7 +43,7 @@ export default function AppMain() {
                 {languages.map(item => (
                     <>
 
-                        <button key={item.id} className={` border rounded ${isActive === item.id ? 'bg-warning' : 'bg-primary'}`} onClick={() => setIsActive(isActive === item.id ? null : item.id)}>
+                        <button key={item.id} className={`p-2 border rounded ${isActive === item.id ? 'bg-warning' : 'bg-primary'} ${isActive===item.id? "text-dark fw-bold" : "text-white fw-bold"}`} onClick={() => setIsActive(isActive === item.id ? null : item.id)}>
                             {item.title}
                         </button>
 
