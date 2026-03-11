@@ -42,31 +42,27 @@ export default function AppMain() {
 
                 {languages.map(item => (
                     <>
-                        <div>
-                            <button key={item.id} className={` border rounded ${isActive === item.id ? 'bg-warning' : 'bg-primary'}`} onClick={() => setIsActive(isActive === item.id ? null : item.id)}>
-                                {item.title}
-                            </button>
-                            {
-                                isActive === item.id &&
-                                
-                                    <div className="card mt-5">
-                                        <h5>{item.title}</h5>
-                                        <p className='pt.5'>{item.description}</p>
-                                    </div>
-                                
 
-                            }
+                        <button key={item.id} className={` border rounded ${isActive === item.id ? 'bg-warning' : 'bg-primary'}`} onClick={() => setIsActive(isActive === item.id ? null : item.id)}>
+                            {item.title}
+                        </button>
 
-                        </div>
+
+
                     </>
                 ))}
+
             </div>
 
-            {/* {languages.filter(item=>(
-                <>
-                    <div key={item.id}>{isActive===item.id? item.description:null}</div>
-                </>
-            ))} */}
+            {languages.map(item => (
+                isActive === item.id && (
+                    <div className="card mt-5 p-3">
+                        <h5>{item.title}</h5>
+                        <div>{item.description}</div>
+                    </div>
+
+                )
+            ))}
         </div>
 
     )
